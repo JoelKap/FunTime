@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "721615852949",
+    "firebase_url": "https://funtime-6014c.firebaseio.com",
+    "project_id": "funtime-6014c",
+    "storage_bucket": "funtime-6014c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:721615852949:android:abe769f109ad5f1a",
+        "android_client_info": {
+          "package_name": "com.funtime.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "721615852949-ajgmvjgndf3a9ovvuq21hvsv9jf06i82.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCx38zZEJDkGGG1oikHHzrGbIwzy_aFcc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

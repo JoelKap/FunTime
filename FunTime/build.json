@@ -1,0 +1,12 @@
+{
+  "android": {
+    "release": {
+      "keystore": "C:\\Release.key",
+      "storePassword": "password",
+      "alias": "kirupac",
+      "password": "password",
+      "keystoreType": ""
+    }
+  }
+
+}
