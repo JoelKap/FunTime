@@ -12,11 +12,7 @@
     self.registerRedirect = function () {
         window.location.href = "register.html";
     };
-
-
-
-
-
+    
     self.SignIn = function (item) {
         self.Password = ko.observable(item.Password());
         self.Email = ko.observable(item.Email());
