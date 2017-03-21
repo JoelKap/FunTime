@@ -24,16 +24,16 @@
         if (user.email === self.Email() && user.password === self.Password()) {
             var isAuth = true;
             if (user.userType == 'Customer') {
-                localStorage.setItem("stored_user", ko.toJSON(user));
+                localStorage.setItem("stored_user", JSON.stringify(user));
                 window.location.href = "home.html";
 
             }
             if (user.userType == 'Owner') {
-                localStorage.setItem("stored_user", ko.toJSON(user));
+                localStorage.setItem("stored_user", JSON.stringify(user));
                 window.location.href = "owner.html";
             }
             if (user.userType == 'Artist') {
-                localStorage.setItem("stored_user", ko.toJSON(user));
+                localStorage.setItem("stored_user", JSON.stringify(user));
                 window.location.href = "artist.html";
             }
             
