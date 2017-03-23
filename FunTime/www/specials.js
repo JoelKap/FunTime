@@ -1,4 +1,4 @@
-﻿function OwnerVm() {
+﻿function specialsVm() {
     var self = this;
     var db = new Firebase("https://fun-time-9c827.firebaseio.com/BusinessType");
     var db1 = new Firebase("https://fun-time-9c827.firebaseio.com/Business");
@@ -123,6 +123,7 @@
         self.editWithItem(data);
         $('#myModal2').modal('show');
     }
+
 
     self.eventManagement = function () {
         window.location.href = "eventManagement.html";

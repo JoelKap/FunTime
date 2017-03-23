@@ -2,6 +2,7 @@
     var self = this;
 
     var db = new Firebase("https://fun-time-9c827.firebaseio.com/User");
+    var key = db.ref().push().key();
     self.Name = ko.observable();
     self.Surname = ko.observable();
     self.Email = ko.observable();
@@ -27,6 +28,7 @@
             "surname": item.Surname(),
             "email": item.Email(),
             "password": item.Password(),
+            "id": key
         });
 
         setTimeout(function () {
@@ -37,6 +39,25 @@
             self.isSaved(ko.observable(true));
         }, 2000);
 
+    }
+
+    self.eventManagement = function () {
+        window.location.href = "eventManagement.html";
+    }
+    self.registerBusiness = function () {
+        window.location.href = "owner.html";
+    }
+    self.specialsManagement = function () {
+        window.location.href = "specials.html";
+    }
+    self.employeeManagement = function () {
+        window.location.href = "employeeManagement.html";
+    }
+    self.accountManagement = function () {
+        window.location.href = "accountManagement.html";
+    }
+    self.logOut = function () {
+        window.location.href = "home.html";
     }
 
 

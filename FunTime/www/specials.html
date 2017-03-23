@@ -37,7 +37,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <link href="css/font-awesome.css" rel="stylesheet"> <!-- font-awesome icons -->
     <!-- //Custom Theme files -->
     <!-- js -->
-    <script src="js/jquery-2.2.3.min.js"></script>  
+    <script src="js/jquery-2.2.3.min.js"></script>
 
     <!--  -->
     <script type="text/javascript">
@@ -57,10 +57,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 <div class="top-nav">
                     <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s2">
                         <h3>Menu</h3>
-                        <a style="cursor:pointer" class="scroll" href="#home" class="active">Home</a>
-                        <a style="cursor:pointer" class="scroll" href="#feature">Register Business</a>
-                        <a style="cursor:pointer" data-bind="click: $root.eventManagement">Event Management</a>
-                        <a style="cursor:pointer" data-bind="click: $root.specialsManagement">Special Management</a>
+                        <a style="cursor:pointer" data-bind="click: $root.home">Home</a>
+                        <a style="cursor:pointer" data-bind="click: $root.registerBusiness">Register Business</a>
+                        <a style="cursor:pointer" data-bind="click: $root.specialsManagement" >Event Management</a>
+                        <a style="cursor:pointer" href="#" class="active">Special Management</a>
                         <a style="cursor:pointer" data-bind="click: $root.employeeManagement">Emp Management</a>
                         <a style="cursor:pointer" data-bind="click: $root.accountManagement">Account Management</a>
                         <a style="cursor:pointer" data-bind="click: $root.logOut">Log out</a>
@@ -91,14 +91,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             </div>
 
             <div class="banner-info">
-                <h1>REGISTER BUSINESS PROFILE<span>HERE</span></h1>
+                <h1>SPECIAL <span>MANAGEMENT</span></h1>
             </div>
         </div>
     </div>
     <!--features-->
     <div id="feature" class="features">
         <div class="container">
-            <h4>Manage registered business</h4>
+            <h4>SPECIALS</h4>
             <div class="bs-docs-exampl ">
                 <table class="table table-hover">
                     <thead>
@@ -112,7 +112,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         </tr>
                     </thead>
                     <tbody data-bind="foreach: $root.businesses">
-                        <tr >
+                        <tr>
                             <td data-bind="text: businessTypeName"></td>
                             <td data-bind="text: businessName"></td>
                             <th data-bind="text: businessDescription"></th>
@@ -123,7 +123,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     </tbody>
                 </table>
             </div>
-            <button class="btn btn-primary" href="#myModal" data-toggle="modal">CREATE BUSINESS</button>
+            <button class="btn btn-primary" href="#myModal" data-toggle="modal">Create Specials</button>
         </div>
     </div>
 
@@ -140,41 +140,41 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <div class="modal-content">
             <div class="modal-header">
                 <span class="close" data-dismiss="modal">&times;</span>
-                <h3>REGISTER BUSINESS</h3>
+                <h3>CREATE SPECIALS</h3>
             </div>
 
             <div class="codes">
                 <div class="container">
-                        <div class="agileinfo-w3lsrow login-top">
-                            <div class="col-md-6 w3llist-grids w3llist-grids-btm2">
-                                <form>
-                                    <p>
-                                        <span style="margin-right: 50px;">Business Type</span>   <select data-bind="options: $root.businessTypes,optionsText: 'description',value: $root.selectedType,optionsCaption: 'Choose...'"></select>
-                                    </p>
-                                    <input type="text" data-bind="value: $root.businessName" class="name active" placeholder="Business Name" required="" />
-                                    <input type="text" data-bind="value: $root.businessDescription" class="surname" placeholder="Business description" required="" />
-                                    <input type="text" data-bind="value: $root.businessContactNumber" class="contact" placeholder="Business Number" required="" />
-                                    <input type="text" data-bind="value: $root.businessLocation" class="location" placeholder="Business Location" required="" />
+                    <div class="agileinfo-w3lsrow login-top">
+                        <div class="col-md-6 w3llist-grids w3llist-grids-btm2">
+                            <form>
+                                <p>
+                                    <span style="margin-right: 50px;">Business Type</span>   <select data-bind="options: $root.businessTypes,optionsText: 'description',value: $root.selectedType,optionsCaption: 'Choose...'"></select>
+                                </p>
+                                <input type="text" data-bind="value: $root.businessName" class="name active" placeholder="Business Name" required="" />
+                                <input type="text" data-bind="value: $root.businessDescription" class="surname" placeholder="Business description" required="" />
+                                <input type="text" data-bind="value: $root.businessContactNumber" class="contact" placeholder="Business Number" required="" />
+                                <input type="text" data-bind="value: $root.businessLocation" class="location" placeholder="Business Location" required="" />
 
-                                    <div>
-                                        <input type="submit" value="Sign Up" data-bind="click: $root.registerBusiness" />
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="clearfix"> </div>
+                                <div>
+                                    <input type="submit" value="Sign Up" data-bind="click: $root.registerBusiness" />
+                                </div>
+                            </form>
                         </div>
+                        <div class="clearfix"> </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div> 
-    
+    </div>
+
     <!-- Modal Edit -->
     <div id="myModal2" class="modal wthree-modal" tabindex="-1">
         <!-- Modal content -->
         <div class="modal-content">
             <div class="modal-header">
                 <span class="close" data-dismiss="modal">&times;</span>
-                <h3>UPDATE BUSINESS</h3>
+                <h3>UPDATE SPECIALS</h3>
             </div>
 
             <div class="codes">
@@ -182,22 +182,22 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     <div class="agileinfo-w3lsrow login-top">
                         <div class="col-md-6 w3llist-grids w3llist-grids-btm2" data-bind="with: $root.editWithItem">
 
-                                <input type="text" data-bind="value: businessName" class="name active" placeholder="Business Name" required="" />
-                                <input type="text" data-bind="value: businessDescription" class="surname" placeholder="Business description" required="" />
-                                <input type="text" data-bind="value: businessContactNumber" class="contact" placeholder="Business Number" required="" />
-                                <input type="text" data-bind="value: businessLocation" class="location" placeholder="Business Location" required="" />
+                            <input type="text" data-bind="value: businessName" class="name active" placeholder="Business Name" required="" />
+                            <input type="text" data-bind="value: businessDescription" class="surname" placeholder="Business description" required="" />
+                            <input type="text" data-bind="value: businessContactNumber" class="contact" placeholder="Business Number" required="" />
+                            <input type="text" data-bind="value: businessLocation" class="location" placeholder="Business Location" required="" />
 
-                                <div>
-                                    <input type="submit" value="Update" data-bind="click: $parent.registerBusinessUpdate" />
-                                </div>
+                            <div>
+                                <input type="submit" value="Update" data-bind="click: $parent.registerBusinessUpdate" />
+                            </div>
                         </div>
                         <div class="clearfix"> </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div> 
-    
+    </div>
+
     <script src="js/bootstrap.js"></script>
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="scripts/platformOverrides.js"></script>
@@ -208,14 +208,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     </script>
     <script src="js/firebase.js"></script>
     <script src="assets/js/knockout.mapping-latest.debug.js"></script>
-    <script src="ownervm.js"></script>
+    <script src="specials.js"></script>
 </body>
 </html>
 
 <script>
     $(document).ready(function () {
-        var ownervm = new OwnerVm();
-        ko.applyBindings(ownervm);
+        var specialsVm = new specialsVm();
+        ko.applyBindings(specialsVm);
     })
 </script>
 <style>
