@@ -1,4 +1,4 @@
-﻿function OwnerVm() {
+﻿function employeeVm() {
     var self = this;
     var db = new Firebase("https://fun-time-9c827.firebaseio.com/BusinessType");
     var db1 = new Firebase("https://fun-time-9c827.firebaseio.com/Business");

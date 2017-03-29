@@ -44,10 +44,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     </div>
                     <div id="navbar" class="navbar-collapse collapse top-w3lnav">
                         <ul class="nav navbar-nav">
-                            <li><a href="index.html">Home</a></li>
-                            <li data-bind="click: $root.loginRedirect"><a class="scroll">Log In</a></li>
-                            <li class="active"><a href="#" class="scroll">Register</a></li>
-                            <!--<li><a href="#contact" class="scroll">Contact</a></li>-->
+                            <li style="cursor:pointer"><a href="index.html">Home</a></li>
+                            <li style="cursor:pointer" data-bind="click: $root.loginRedirect"><a class="scroll">Log In</a></li>
+                            <li style="cursor:pointer" class="active"><a href="#" class="scroll">Register</a></li>
                         </ul>
                         <div class="w3social-icons w3lsnav-right">
                             <ul>
@@ -165,9 +164,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <script type='text/javascript'
             src="http://ajax.aspnetcdn.com/ajax/knockout/knockout-2.2.1.js">
     </script>
-    <script type='text/javascript'
+    <script src="js/firebase.js"></script>
+    <!--<script type='text/javascript'
             src='https://cdn.firebase.com/v0/firebase.js'>
-    </script>
+    </script>-->
     <script src="assets/js/knockout.mapping-latest.debug.js"></script>
     <script src="registration.controller.js"></script>
 
