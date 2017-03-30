@@ -24,12 +24,14 @@
 
     self.select = function (item) {
         self.selected(item);
+        localStorage.setItem("selected_club", JSON.stringify(item));
     };
 
-   
-
-
-
-
-
+    self.viewSpecials = function () {
+       
+        window.location.href = "special.html";
+    }
+    self.viewEvents = function () {
+        window.location.href = "event.html";
+    }
 }
