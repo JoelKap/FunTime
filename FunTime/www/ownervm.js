@@ -140,6 +140,6 @@
         window.location.href = "accountManagement.html";
     }
     self.logOut = function () {
-        window.location.href = "home.html";
+        window.location.href = "index.html";
     }
 }
