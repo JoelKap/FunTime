@@ -1,16 +1,15 @@
 ﻿function employeeVm() {
     var self = this;
-    var db = new Firebase("https://fun-time-9c827.firebaseio.com/BusinessType");
-    var db1 = new Firebase("https://fun-time-9c827.firebaseio.com/Business");
+    var db = new Firebase("https://fun-time-9c827.firebaseio.com/Business");
+    var db1 = new Firebase("https://fun-time-9c827.firebaseio.com/ClubEmployee");
 
     var key = db1.ref().push().key();
-    self.businessName = ko.observable();
-    self.businessDescription = ko.observable();
-    self.businessContactNumber = ko.observable();
-    self.businessLocation = ko.observable();
-    self.businessTypeName = ko.observable();
+    self.name = ko.observable();
+    self.lastname = ko.observable();
+    self.contact = ko.observable();
+    self.address = ko.observable();
+    self.employees = ko.observableArray([]);
     self.businesses = ko.observableArray([]);
-    self.businessTypes = ko.observableArray([]);
     self.selectedType = ko.observable();
     self.editWithItem = ko.observable(null);
 
@@ -18,76 +17,72 @@
 
     self.selectedType = ko.observable(self.selectedOption);
 
-    db.on("child_added", GetBusinessTypes);
-    function GetBusinessTypes(item) {
+    db.on("child_added", GetBusinesses);
+    function GetBusinesses(item) {
         var type = item.val();
-        self.businessTypes.push({ description: type.description });
+        self.businesses.push({
+            businessName: type.businessName,
+            id: type.id != undefined ? type.id : ""
+        });
     }
 
-    db1.on("child_added", GetExistingBusinesses);
-    function GetExistingBusinesses(item) {
-        var data = item.val();
-        if (data.OwnerId == userJsonObj.id) {
-            self.businesses.push({
-                businessName: data.businessName,
-                businessDescription: data.businessDescription,
-                businessContactNumber: data.businessContactNumber,
-                businessLocation: data.businessLocation,
-                businessTypeName: data.businessTypeName,
-                id: data.id,
-                OwnerId: data.OwnerId
-            });
-        }
+
+    db1.on("child_added", GetEmployee);
+    function GetEmployee(item) {
+        var type = item.val();
+        self.employees.push({
+            name: type.name,
+            lastname: type.lastname,
+            contact: type.contact,
+            address: type.address,
+            id: type.id != undefined ? type.id : "",
+            businessId: type.businessId != undefined ? type.businessId: ""
+        });
     }
 
-    self.registerBusiness = function (item) {
-        var description = self.selectedType().description;
+
+    self.registerEmployee = function (item) {
+        var id = self.selectedType().id;
         var key = db1.ref().push().key();
         db1.push({
-            "businessName": item.businessName(),
-            "businessDescription": item.businessDescription(),
-            "businessContactNumber": item.businessContactNumber(),
-            "businessLocation": item.businessLocation(),
-            "OwnerId": userJsonObj.id,
-            "businessTypeName": description,
+            "name": item.name(),
+            "lastname": item.lastname(),
+            "contact": item.contact(),
+            "address": item.address(),
+            "businessId": id,
             "id": key,
         });
 
 
         $("#myModal .close").click();
-        self.businesses.push({
-            businessName: item.businessName(),
-            businessDescription: item.businessDescription(),
-            businessContactNumber: item.businessContactNumber(),
-            businessLocation: item.businessLocation(),
-            businessTypeName: description
+        self.employees.push({
+            name: item.name(),
+            lastname: item.lastname(),
+            contact: item.contact(),
+            address: item.address()
         });
 
         setTimeout(function () {
-            self.businessName(null);
-            self.businessDescription(null);
-            self.businessContactNumber(null);
-            self.businessLocation(null);
-            self.selectedType(null);
-            self.businessTypeName(null);
+            self.name(null);
+            self.lastname(null);
+            self.contact(null);
+            self.address(null)
         }, 2000);
     }
 
-    self.registerBusinessUpdate = function (data) {
-        //var description = self.selectedType().description;
-        var db1 = new Firebase("https://fun-time-9c827.firebaseio.com/Business/");
+    self.updateEmployee = function (data) {
+        var db1 = new Firebase("https://fun-time-9c827.firebaseio.com/ClubEmployee");
         var query = db1.orderByChild('id').equalTo(data.id);
 
         query.on('value', function (snap) {
             var obj = snap.val();
             var snapRef = snap.ref();
             snapRef.update({
-                OwnerId: obj.OwnerId,
-                businessContactNumber: obj.businessContactNumber,
-                businessDescription: obj.businessDescription,
-                businessLocation: obj.businessLocation,
-                businessName: obj.businessName,
-                businessTypeName: obj.businessTypeName
+                businessId: obj.businessId,
+                name: obj.name,
+                lastname: obj.lastname,
+                contact: obj.contact,
+                address: obj.address
             });
         });
 
@@ -101,21 +96,19 @@
         //    "id": self.id
         //})
 
-        $("#myModal .close").click();
+        $("#myModal2 .close").click();
         self.businesses.push({
-            businessTypeName: description,
-            businessName: data.businessName(),
-            businessDescription: data.businessDescription(),
-            businessContactNumber: data.businessContactNumber(),
-            businessLocation: data.businessLocation()
+            name: data.name(),
+            lastname: data.lastname(),
+            contact: data.contact(),
+            address: data.address()
         });
 
         setTimeout(function () {
-            self.businessName(null);
-            self.businessDescription(null);
-            self.businessContactNumber(null);
-            self.businessLocation(null);
-            self.selectedType(null);
+            self.name(null);
+            self.lastname(null);
+            self.contact(null);
+            self.address(null)
         }, 2000);
     }
 
@@ -133,13 +126,11 @@
     self.specialsManagement = function () {
         window.location.href = "specials.html";
     }
-    self.employeeManagement = function () {
-        window.location.href = "employeeManagement.html";
-    }
+
     self.accountManagement = function () {
         window.location.href = "accountManagement.html";
     }
     self.logOut = function () {
-        window.location.href = "home.html";
+        window.location.href = "index.html";
     }
 }

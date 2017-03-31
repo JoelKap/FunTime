@@ -41,12 +41,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
     <!--  -->
     <script type="text/javascript">
-			jQuery(document).ready(function($) {
-				$(".scroll").click(function(event){
-					event.preventDefault();
-					$('html,body').animate({scrollTop:$(this.hash).offset().top},900);
-				});
-			});
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+                $('html,body').animate({ scrollTop: $(this.hash).offset().top }, 900);
+            });
+        });
     </script>
     <!---- start-smoth-scrolling---->
 </head>
@@ -70,22 +70,22 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     </div>
                     <script src="homeTemplate/js/classie.js"></script>
                     <script>
-				var menuRight = document.getElementById( 'cbp-spmenu-s2' ),
-				showRightPush = document.getElementById( 'showRightPush' ),
-				body = document.body;
+                        var menuRight = document.getElementById('cbp-spmenu-s2'),
+                        showRightPush = document.getElementById('showRightPush'),
+                        body = document.body;
 
-				showRightPush.onclick = function() {
-					classie.toggle( this, 'active' );
-					classie.toggle( body, 'cbp-spmenu-push-toleft' );
-					classie.toggle( menuRight, 'cbp-spmenu-open' );
-					disableOther( 'showRightPush' );
-				};
+                        showRightPush.onclick = function () {
+                            classie.toggle(this, 'active');
+                            classie.toggle(body, 'cbp-spmenu-push-toleft');
+                            classie.toggle(menuRight, 'cbp-spmenu-open');
+                            disableOther('showRightPush');
+                        };
 
-				function disableOther( button ) {
-					if( button !== 'showRightPush' ) {
-						classie.toggle( showRightPush, 'disabled' );
-					}
-				}
+                        function disableOther(button) {
+                            if (button !== 'showRightPush') {
+                                classie.toggle(showRightPush, 'disabled');
+                            }
+                        }
                     </script>
                 </div>
             </div>
@@ -103,21 +103,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th>Type</th>
                             <th>name</th>
                             <th>desc</th>
-                            <th>contact</th>
-                            <th>Location</th>
+                            <th>Date</th>
                             <th>edit</th>
                         </tr>
                     </thead>
-                    <tbody data-bind="foreach: $root.businesses">
+                    <tbody data-bind="foreach: $root.events">
                         <tr>
-                            <td data-bind="text: businessTypeName"></td>
-                            <td data-bind="text: businessName"></td>
-                            <th data-bind="text: businessDescription"></th>
-                            <td data-bind="text: businessContactNumber"></td>
-                            <td data-bind="text: businessLocation"></td>
+                            <td data-bind="text: name"></td>
+                            <td data-bind="text: description"></td>
+                            <th data-bind="text: date"></th>
                             <td data-bind="click: $parent.editItem" style="color:red; cursor:pointer">edit</td>
                         </tr>
                     </tbody>
@@ -148,16 +144,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     <div class="agileinfo-w3lsrow login-top">
                         <div class="col-md-6 w3llist-grids w3llist-grids-btm2">
                             <form>
-                                <p>
-                                    <span style="margin-right: 50px;">Business Type</span>   <select data-bind="options: $root.businessTypes,optionsText: 'description',value: $root.selectedType,optionsCaption: 'Choose...'"></select>
-                                </p>
-                                <input type="text" data-bind="value: $root.businessName" class="name active" placeholder="Business Name" required="" />
-                                <input type="text" data-bind="value: $root.businessDescription" class="surname" placeholder="Business description" required="" />
-                                <input type="text" data-bind="value: $root.businessContactNumber" class="contact" placeholder="Business Number" required="" />
-                                <input type="text" data-bind="value: $root.businessLocation" class="location" placeholder="Business Location" required="" />
-
+                                <span style="margin-right: 50px;">Business</span>   <select data-bind="options: $root.businesses,optionsText: 'businessName',value: $root.selectedType,optionsCaption: 'Choose...'"></select>
+                                <input type="text" data-bind="value: $root.name" class="name active" placeholder="Event Name" required="" />
+                                <input type="text" data-bind="value: $root.description" class="surname" placeholder="Description" required="" />
+                                <input type="text" data-bind="value: $root.date" class="contact" placeholder="Date" required="" />
                                 <div>
-                                    <input type="submit" value="Sign Up" data-bind="click: $root.registerBusiness" />
+                                    <input type="submit" value="Create event" data-bind="click: $root.registerEvent" />
                                 </div>
                             </form>
                         </div>
@@ -182,13 +174,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     <div class="agileinfo-w3lsrow login-top">
                         <div class="col-md-6 w3llist-grids w3llist-grids-btm2" data-bind="with: $root.editWithItem">
 
-                            <input type="text" data-bind="value: businessName" class="name active" placeholder="Business Name" required="" />
-                            <input type="text" data-bind="value: businessDescription" class="surname" placeholder="Business description" required="" />
-                            <input type="text" data-bind="value: businessContactNumber" class="contact" placeholder="Business Number" required="" />
-                            <input type="text" data-bind="value: businessLocation" class="location" placeholder="Business Location" required="" />
-
+                            <input type="text" data-bind="value: name" class="name active" placeholder="Event Name" required="" />
+                            <input type="text" data-bind="value: description" class="surname" placeholder="Event description" required="" />
+                            <input type="text" data-bind="value: date" class="contact" placeholder="Date" required="" />
                             <div>
-                                <input type="submit" value="Update" data-bind="click: $parent.registerBusinessUpdate" />
+                                <input type="submit" value="Update" data-bind="click: $parent.registerEventUpdate" />
                             </div>
                         </div>
                         <div class="clearfix"> </div>
@@ -206,16 +196,16 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <script type='text/javascript'
             src="http://ajax.aspnetcdn.com/ajax/knockout/knockout-2.2.1.js">
     </script>
-    <script src="js/firebase.js"></script>
     <script src="assets/js/knockout.mapping-latest.debug.js"></script>
+    <script src="js/firebase.js"></script>
     <script src="eventManagement.js"></script>
 </body>
 </html>
 
 <script>
     $(document).ready(function () {
-        var eventvm = new eventvm();
-        ko.applyBindings(eventvm);
+        var event = new eventvm();
+        ko.applyBindings(event);
     })
 </script>
 

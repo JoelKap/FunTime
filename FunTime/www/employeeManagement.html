@@ -103,21 +103,19 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th>Type</th>
                             <th>name</th>
-                            <th>desc</th>
+                            <th>last name</th>
                             <th>contact</th>
-                            <th>Location</th>
+                            <th>address</th>
                             <th>edit</th>
                         </tr>
                     </thead>
-                    <tbody data-bind="foreach: $root.businesses">
+                    <tbody data-bind="foreach: $root.employees">
                         <tr>
-                            <td data-bind="text: businessTypeName"></td>
-                            <td data-bind="text: businessName"></td>
-                            <th data-bind="text: businessDescription"></th>
-                            <td data-bind="text: businessContactNumber"></td>
-                            <td data-bind="text: businessLocation"></td>
+                            <td data-bind="text: name"></td>
+                            <td data-bind="text: lastname"></td>
+                            <th data-bind="text: contact"></th>
+                            <td data-bind="text: address"></td>
                             <td data-bind="click: $parent.editItem" style="color:red; cursor:pointer">edit</td>
                         </tr>
                     </tbody>
@@ -148,16 +146,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     <div class="agileinfo-w3lsrow login-top">
                         <div class="col-md-6 w3llist-grids w3llist-grids-btm2">
                             <form>
-                                <p>
-                                    <span style="margin-right: 50px;">Business Type</span>   <select data-bind="options: $root.businessTypes,optionsText: 'description',value: $root.selectedType,optionsCaption: 'Choose...'"></select>
-                                </p>
-                                <input type="text" data-bind="value: $root.businessName" class="name active" placeholder="Business Name" required="" />
-                                <input type="text" data-bind="value: $root.businessDescription" class="surname" placeholder="Business description" required="" />
-                                <input type="text" data-bind="value: $root.businessContactNumber" class="contact" placeholder="Business Number" required="" />
-                                <input type="text" data-bind="value: $root.businessLocation" class="location" placeholder="Business Location" required="" />
-
+                                <span style="margin-right: 50px;">Business</span>   <select data-bind="options: $root.businesses,optionsText: 'businessName',value: $root.selectedType,optionsCaption: 'Choose...'"></select>
+                                <input type="text" data-bind="value: $root.name" class="name active" placeholder="Employee Name" required="" />
+                                <input type="text" data-bind="value: $root.lastname" class="surname" placeholder="Employee Last Name" required="" />
+                                <input type="text" data-bind="value: $root.contact" class="contact" placeholder="Employee Contact" required="" />
+                                <input type="text" data-bind="value: $root.address" class="location" placeholder="Employee Address" required="" />
                                 <div>
-                                    <input type="submit" value="Sign Up" data-bind="click: $root.registerBusiness" />
+                                    <input type="submit" value="Create Employee" data-bind="click: $root.registerEmployee" />
                                 </div>
                             </form>
                         </div>
@@ -182,13 +177,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     <div class="agileinfo-w3lsrow login-top">
                         <div class="col-md-6 w3llist-grids w3llist-grids-btm2" data-bind="with: $root.editWithItem">
 
-                            <input type="text" data-bind="value: businessName" class="name active" placeholder="Business Name" required="" />
-                            <input type="text" data-bind="value: businessDescription" class="surname" placeholder="Business description" required="" />
-                            <input type="text" data-bind="value: businessContactNumber" class="contact" placeholder="Business Number" required="" />
-                            <input type="text" data-bind="value: businessLocation" class="location" placeholder="Business Location" required="" />
+                            <input type="text" data-bind="value: name" class="name active" placeholder="Employee Name" required="" />
+                            <input type="text" data-bind="value: lastname" class="surname" placeholder="Employee Last Name" required="" />
+                            <input type="text" data-bind="value: contact" class="contact" placeholder="Employee Contact Number" required="" />
+                            <input type="text" data-bind="value: address" class="location" placeholder="Employee Address" required="" />
 
                             <div>
-                                <input type="submit" value="Update" data-bind="click: $parent.registerBusinessUpdate" />
+                                <input type="submit" value="Update" data-bind="click: $parent.updateEmployee" />
                             </div>
                         </div>
                         <div class="clearfix"> </div>
@@ -214,8 +209,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 <script>
     $(document).ready(function () {
-        var employeeVm = new employeeVm();
-        ko.applyBindings(employeeVm);
+        var emVm = new employeeVm();
+        ko.applyBindings(emVm);
     })
 </script>
 <style>
