@@ -73,50 +73,17 @@
         }, 2000);
     }
 
+    function updateUserBalance(user) {
+        db1.orderByChild("id").equalTo(user.id).once("child_added", function (snapshot) {
+            snapshot.ref().update(user);
+        })
+    }
+
     self.registerBusinessUpdate = function (data) {
-        //var description = self.selectedType().description;
-        var db1 = new Firebase("https://fun-time-9c827.firebaseio.com/Business/");
-        var query = db1.orderByChild('id').equalTo(data.id);
+        updateUserBalance(data);
+        $("#myModal2 .close").click();
+        alert('saved successfully, Please refresh to see changes');
 
-        query.on('value', function (snap) {
-            var obj = snap.val();
-            var snapRef = snap.ref();
-            snapRef.update({
-                OwnerId: obj.OwnerId,
-                businessContactNumber: obj.businessContactNumber,
-                businessDescription: obj.businessDescription,
-                businessLocation: obj.businessLocation,
-                businessName: obj.businessName,
-                businessTypeName: obj.businessTypeName
-            });
-        });
-
-        //db1.update({
-        //    "businessname": data.businessName,
-        //    "businessdescription": data.businessDescription,
-        //    "businesscontactNumber": data.businessContactNumber,
-        //    "businesslocation": data.businessLocation,
-        //    "OwnerId": userJsonObj.id,
-        //    "businessType": 'Testing', //self.selectedType().description,
-        //    "id": self.id
-        //})
-
-        $("#myModal .close").click();
-        self.businesses.push({
-            businessTypeName: description,
-            businessName: data.businessName(),
-            businessDescription: data.businessDescription(),
-            businessContactNumber: data.businessContactNumber(),
-            businessLocation: data.businessLocation()
-        });
-
-        setTimeout(function () {
-            self.businessName(null);
-            self.businessDescription(null);
-            self.businessContactNumber(null);
-            self.businessLocation(null);
-            self.selectedType(null);
-        }, 2000);
     }
 
     self.editItem = function (data) {
@@ -136,6 +103,10 @@
     self.employeeManagement = function () {
         window.location.href = "employeeManagement.html";
     }
+    self.alcoholManagement = function () {
+        window.location.href = "alcoholOwner.html";
+    }
+
     self.accountManagement = function () {
         window.location.href = "accountManagement.html";
     }

@@ -36,7 +36,7 @@
             contact: type.contact,
             address: type.address,
             id: type.id != undefined ? type.id : "",
-            businessId: type.businessId != undefined ? type.businessId: ""
+            businessId: type.businessId != undefined ? type.businessId : ""
         });
     }
 
@@ -70,46 +70,21 @@
         }, 2000);
     }
 
+
+
+
     self.updateEmployee = function (data) {
-        var db1 = new Firebase("https://fun-time-9c827.firebaseio.com/ClubEmployee");
-        var query = db1.orderByChild('id').equalTo(data.id);
 
-        query.on('value', function (snap) {
-            var obj = snap.val();
-            var snapRef = snap.ref();
-            snapRef.update({
-                businessId: obj.businessId,
-                name: obj.name,
-                lastname: obj.lastname,
-                contact: obj.contact,
-                address: obj.address
-            });
-        });
-
-        //db1.update({
-        //    "businessname": data.businessName,
-        //    "businessdescription": data.businessDescription,
-        //    "businesscontactNumber": data.businessContactNumber,
-        //    "businesslocation": data.businessLocation,
-        //    "OwnerId": userJsonObj.id,
-        //    "businessType": 'Testing', //self.selectedType().description,
-        //    "id": self.id
-        //})
+        updateUserBalance(data)
 
         $("#myModal2 .close").click();
-        self.businesses.push({
-            name: data.name(),
-            lastname: data.lastname(),
-            contact: data.contact(),
-            address: data.address()
-        });
 
-        setTimeout(function () {
-            self.name(null);
-            self.lastname(null);
-            self.contact(null);
-            self.address(null)
-        }, 2000);
+        alert('saved successfully, Please refresh to see changes');
+    }
+    function updateUserBalance(data) {
+        db1.orderByChild("id").equalTo(data.id).once("child_added", function (snapshot) {
+            snapshot.ref().update(data);
+        })
     }
 
     self.editItem = function (data) {
@@ -120,11 +95,15 @@
     self.eventManagement = function () {
         window.location.href = "eventManagement.html";
     }
-    self.registerBusiness = function () {
+    self.businessManagement = function () {
         window.location.href = "owner.html";
     }
     self.specialsManagement = function () {
         window.location.href = "specials.html";
+    }
+
+    self.alcoholManagement = function () {
+        window.location.href = "alcoholOwner.html";
     }
 
     self.accountManagement = function () {

@@ -5,13 +5,16 @@
     self.specials = ko.observableArray([]);
     self.selected = ko.observable({});
     var selectedClubJsonObj = JSON.parse(localStorage.getItem('selected_club'));
+    self.hasSpecials = false;
 
     db.on("child_added", GetSpecials);
+
+
 
     function GetSpecials(data) {
         var special = data.val();
         if (selectedClubJsonObj.id === special.businessId) {
-
+            self.hasSpecials = true;
             self.specials.push(special);
         }
     };
@@ -29,5 +32,13 @@
             }
         };
         xhr.send();
+    }
+
+    self.loginRedirect = function () {
+        window.location.href = "logIn.html";
+    }
+
+    self.registerRedirect = function () {
+        window.location.href = "register.html";
     }
 }

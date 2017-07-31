@@ -5,11 +5,11 @@
     self.businesses = ko.observableArray([]);
     self.selected = ko.observable({});
 
-    init();
+    //init();
 
-    function init() {
+    //function init() {
 
-    }
+    //}
 
     db.on("child_added", GetBusinesses);
 
@@ -18,8 +18,12 @@
         self.businesses.push(business);
     };
 
-    var loginRedirect = function () {
+    self.loginRedirect = function () {
         window.location.href = "logIn.html";
+    }
+
+    self.registerRedirect = function () {
+        window.location.href = "register.html";
     }
 
     self.select = function (item) {

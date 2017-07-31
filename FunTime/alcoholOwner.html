@@ -30,15 +30,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 
     <!--  -->
-
-    <link href="css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
-    <link href="css/style.css" type="text/css" rel="stylesheet" media="all">
-    <link href="css/carousel.css" type="text/css" rel="stylesheet" media="all">
-    <link href="css/font-awesome.css" rel="stylesheet"> <!-- font-awesome icons -->
     <!-- //Custom Theme files -->
     <!-- js -->
-    <script src="js/jquery-2.2.3.min.js"></script>
-
     <!--  -->
     <script type="text/javascript">
         jQuery(document).ready(function ($) {
@@ -49,8 +42,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         });
     </script>
     <!---- start-smoth-scrolling---->
+    <link href="css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
+    <link href="css/style.css" type="text/css" rel="stylesheet" media="all">
+    <link href="css/carousel.css" type="text/css" rel="stylesheet" media="all">
+    <link href="css/font-awesome.css" rel="stylesheet"> <!-- font-awesome icons -->
+    <script src="js/jquery-2.2.3.min.js"></script>
+
 </head>
-<body class="cbp-spmenu-push" id="deviceready">
+<body id="deviceready">
     <div id="home" class="banner">
         <div class="container">
             <div class="header">
@@ -59,10 +58,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         <h3>Menu</h3>
                         <a style="cursor:pointer" data-bind="click: $root.home">Home</a>
                         <a style="cursor:pointer" data-bind="click: $root.registerBusiness">Register Business</a>
-                        <a style="cursor:pointer" data-bind="click: $root.eventManagement">Event Management</a>
-                        <a style="cursor:pointer" href="#" class="active">Special Management</a>
+                        <a style="cursor:pointer" data-bind="click: $root.customerEventManagement">Event Management</a>
+                        <a style="cursor:pointer" data-bind="click: $root.specialsManagement">Special Management</a>
                         <a style="cursor:pointer" data-bind="click: $root.employeeManagement">Emp Management</a>
-                        <a style="cursor:pointer" data-bind="click: $root.alcoholManagement">Alcohol Management</a>
+                        <a style="cursor:pointer" href="#home" class="active" >Alcohol Management</a>
                         <a style="cursor:pointer" data-bind="click: $root.accountManagement">Account Management</a>
                         <a style="cursor:pointer" data-bind="click: $root.logOut">Log out</a>
                     </nav>
@@ -92,35 +91,37 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             </div>
 
             <div class="banner-info">
-                <h1>SPECIAL <span>MANAGEMENT</span></h1>
+                <h1>ALCOHOL <span>MANAGEMENT</span></h1>
             </div>
         </div>
     </div>
     <!--features-->
     <div id="feature" class="features">
         <div class="container">
-            <h4>SPECIALS</h4>
-            <div class="bs-docs-exampl ">
+            <h4>Alcohol Management</h4>
+            <div class="bs-docs-exampl">
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th>name</th>
-                            <th>valid From Date</th>
-                            <th>valid To Date</th>
+                            <th>Type</th>
+                            <th>Name</th>
+                            <th>Price</th>
                             <th>edit</th>
+                            <th>Delete</th>
                         </tr>
                     </thead>
-                    <tbody data-bind="foreach: $root.specials">
+                    <tbody data-bind="foreach: $root.alcohols">
                         <tr>
+                            <td data-bind="text: type"></td>
                             <td data-bind="text: name"></td>
-                            <td data-bind="text: validFromDate"></td>
-                            <th data-bind="text: validToDate"></th>
-                            <td data-bind="click: $parent.editItem" style="color:red; cursor:pointer">edit</td>
+                            <td data-bind="text: price"></td>
+                            <td data-bind="click: $parent.editAlcohol" style="color:red; cursor:pointer">edit</td>
+                            <th><input type="submit" value="Cancel" data-bind="click: $root.cancelTicket" /></th>
                         </tr>
                     </tbody>
                 </table>
             </div>
-            <button class="btn btn-primary" href="#myModal" data-toggle="modal">Create Specials</button>
+            <button class="btn btn-primary" href="#myModalA" data-toggle="modal">Create Alcohol</button>
         </div>
     </div>
 
@@ -137,7 +138,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <div class="modal-content">
             <div class="modal-header">
                 <span class="close" data-dismiss="modal">&times;</span>
-                <h3>CREATE SPECIALS</h3>
+                <h3>REGISTER EVENT</h3>
             </div>
 
             <div class="codes">
@@ -146,11 +147,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         <div class="col-md-6 w3llist-grids w3llist-grids-btm2">
                             <form>
                                 <span style="margin-right: 50px;">Business</span>   <select data-bind="options: $root.businesses,optionsText: 'businessName',value: $root.selectedType,optionsCaption: 'Choose...'"></select>
-                                <input type="text" data-bind="value: $root.name" class="name active" placeholder="Special Name" required="" />
-                                <input type="text" data-bind="value: $root.validFromDate" class="surname" placeholder="From Date" required="" />
-                                <input type="text" data-bind="value: $root.validToDate" class="contact" placeholder="To Date" required="" />
+                                <input type="text" data-bind="value: $root.name" class="name active" placeholder="Event Name" required="" />
+                                <input type="text" data-bind="value: $root.description" class="surname" placeholder="Description" required="" />
+                                <input type="text" data-bind="value: $root.amountInToken" class="surname" placeholder="Price" required="" />
+                                <input type="text" data-bind="value: $root.date" class="contact" placeholder="Date" required="" />
                                 <div>
-                                    <input type="submit" value="Create Special" data-bind="click: $root.createSpecials" />
+                                    <input type="submit" value="Create alcohol" data-bind="click: $root.registerEvent" />
                                 </div>
                             </form>
                         </div>
@@ -161,13 +163,43 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         </div>
     </div>
 
+    <div id="myModalA" class="modal wthree-modal" tabindex="-1">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close" data-dismiss="modal">&times;</span>
+                <h3>REGISTER ALCOHOL</h3>
+            </div>
+
+            <div class="codes">
+                <div class="container">
+                    <div class="agileinfo-w3lsrow login-top">
+                        <div class="col-md-6 w3llist-grids w3llist-grids-btm2">
+                            <form>
+
+                                <input type="text" data-bind="value: $root.type" class="name active" placeholder="Type" required="" />
+                                <input type="text" data-bind="value: $root.name" class="surname" placeholder="Name" required="" />
+                                <input type="text" data-bind="value: $root.price" class="surname" placeholder="Price" required="" />
+                                <div>
+                                    <input type="submit" value="Create alcohol" data-bind="click: $root.registerAlcohol" />
+                                </div>
+                            </form>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <!-- Modal Edit -->
     <div id="myModal2" class="modal wthree-modal" tabindex="-1">
         <!-- Modal content -->
         <div class="modal-content">
             <div class="modal-header">
                 <span class="close" data-dismiss="modal">&times;</span>
-                <h3>UPDATE SPECIALS</h3>
+                <h3>UPDATE EVENT</h3>
             </div>
 
             <div class="codes">
@@ -175,11 +207,39 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     <div class="agileinfo-w3lsrow login-top">
                         <div class="col-md-6 w3llist-grids w3llist-grids-btm2" data-bind="with: $root.editWithItem">
 
-                            <input type="text" data-bind="value: name" class="name active" placeholder="Name" required="" />
-                            <input type="text" data-bind="value: validFromDate" class="surname" placeholder="valid From Date" required="" />
-                            <input type="text" data-bind="value: validToDate" class="contact" placeholder="valid To Date" required="" />
+                            <input type="text" data-bind="value: name" class="name active" placeholder="Event Name" required="" />
+                            <input type="text" data-bind="value: description" class="surname" placeholder="Event description" required="" />
+                            <input type="text" data-bind="value: amountInToken" class="surname" placeholder="Price" required="" />
+                            <input type="text" data-bind="value: date" class="contact" placeholder="Date" required="" />
                             <div>
-                                <input type="submit" value="Update" data-bind="click: $parent.registerSpecialUpdate" />
+                                <input type="submit" value="Update" data-bind="click: $parent.registerEventUpdate" />
+                            </div>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="myModal3" class="modal wthree-modal" tabindex="-1">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close" data-dismiss="modal">&times;</span>
+                <h3>UPDATE ALCOHOL</h3>
+            </div>
+
+            <div class="codes">
+                <div class="container">
+                    <div class="agileinfo-w3lsrow login-top">
+                        <div class="col-md-6 w3llist-grids w3llist-grids-btm2" data-bind="with: $root.editWithItem">
+
+                            <input type="text" data-bind="value: type" class="name active" placeholder="Type" required="" />
+                            <input type="text" data-bind="value: name" class="surname" placeholder="Name" required="" />
+                            <input type="text" data-bind="value: price" class="surname" placeholder="Price" required="" />
+                            <div>
+                                <input type="submit" value="Update" data-bind="click: $parent.alcoholtUpdate" />
                             </div>
                         </div>
                         <div class="clearfix"> </div>
@@ -197,18 +257,16 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <script type='text/javascript'
             src="http://ajax.aspnetcdn.com/ajax/knockout/knockout-2.2.1.js">
     </script>
-    <script src="js/firebase.js"></script>
     <script src="assets/js/knockout.mapping-latest.debug.js"></script>
-    <script src="specials.js"></script>
+    <script src="js/firebase.js"></script>
+    <script src="eventManagement.js"></script>
 </body>
 </html>
 
 <script>
     $(document).ready(function () {
-        var spvm = new specialsVm();
-        ko.applyBindings(spvm);
+        var event = new eventvm();
+        ko.applyBindings(event);
     })
 </script>
-<style>
 
-</style>

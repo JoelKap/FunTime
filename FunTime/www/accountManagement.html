@@ -62,6 +62,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         <a style="cursor:pointer" href="#home" class="active">Event Management</a>
                         <a style="cursor:pointer" data-bind="click: $root.specialsManagement">Special Management</a>
                         <a style="cursor:pointer" data-bind="click: $root.employeeManagement">Emp Management</a>
+                        <a style="cursor:pointer" data-bind="click: $root.alcoholManagement">Alcohol Management</a>
                         <a style="cursor:pointer" data-bind="click: $root.accountManagement">Account Management</a>
                         <a style="cursor:pointer" data-bind="click: $root.logOut">Log out</a>
                     </nav>
@@ -96,41 +97,41 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         </div>
     </div>
     <!--features-->
+
     <div id="feature" class="features">
         <div class="container">
-            <h4>Event Management</h4>
-            <div class="bs-docs-exampl">
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th>Type</th>
-                            <th>name</th>
-                            <th>desc</th>
-                            <th>contact</th>
-                            <th>Location</th>
-                            <th>edit</th>
-                        </tr>
-                    </thead>
-                    <tbody data-bind="foreach: $root.businesses">
-                        <tr>
-                            <td data-bind="text: businessTypeName"></td>
-                            <td data-bind="text: businessName"></td>
-                            <th data-bind="text: businessDescription"></th>
-                            <td data-bind="text: businessContactNumber"></td>
-                            <td data-bind="text: businessLocation"></td>
-                            <td data-bind="click: $parent.editItem" style="color:red; cursor:pointer">edit</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <h4>Account Management</h4>
+            <div>
+                <h1 data-bind="text: $root.balance"></h1>
             </div>
-            <button class="btn btn-primary" href="#myModal" data-toggle="modal">Create Event</button>
+            <div>
+                <h4>BUY TOKEN</h4>
+            </div>
+            <div class="codes">
+                <div class="container">
+                    <div class="grid_3 grid_4">
+                        <div class="agileinfo-w3lsrow login-top">
+                            <div class="col-md-6 w3llist-grids">
+                                <form action="#" method="post">
+                                    <input type="text" data-bind="value: $root.amount" class="surname" placeholder="Price" required="">
+                                    <input type="submit" value="Buy" data-bind="click: $root.buyToken">
+                                    <div>
+                                        <span data-bind="if: $root.isAdded" style="color:red">Added successfully</span>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="clearfix"> </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-
+    
     <!--footer-->
     <div class="w3copy-agile">
         <div class="container">
-            <p class="footer-class">© 2017 Fun Time. All Rights Reserved | Design by  <a href="http://w3layouts.com/" target="_blank">Sosh Student</a> </p>
+            <p class="footer-class">© 2017 FunTime App. All Rights Reserved | Design by  Sosh Student</p>
         </div>
     </div>
 

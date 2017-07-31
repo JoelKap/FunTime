@@ -9,7 +9,7 @@
     self.Password = ko.observable();
     self.isSaved = ko.observable(false);
     self.selectedUser = ko.observable();
-    self.userTypes = ko.observableArray([{ description: 'Owner' }, { description: 'Artist' }, { description: 'Customer' }]),
+    self.userTypes = ko.observableArray([{ description: 'Owner' }, { description: 'Customer' }]),
 
     self.loginRedirect = function () {
         window.location.href = "logIn.html";

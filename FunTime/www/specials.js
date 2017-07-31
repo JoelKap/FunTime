@@ -62,43 +62,28 @@
         }, 2000);
     }
 
+    function updateUserBalance(user) {
+        db.orderByChild("id").equalTo(user.id).once("child_added", function (snapshot) {
+            snapshot.ref().update(user);
+        })
+    }
+
     self.registerSpecialUpdate = function (data) {
-        var db1 = new Firebase("https://fun-time-9c827.firebaseio.com/Special");
-        var query = db1.orderByChild('id').equalTo(data.id);
 
-        query.on('value', function (snap) {
-            var obj = snap.val();
-            var snapRef = snap.ref();
-            snapRef.update({
-                businessId: obj.businessId,
-                name: obj.name,
-                validFromDate: obj.validFromDate,
-                validToDate: obj.validToDate
-            });
-        });
-
-        //db1.update({
-        //    "businessname": data.businessName,
-        //    "businessdescription": data.businessDescription,
-        //    "businesscontactNumber": data.businessContactNumber,
-        //    "businesslocation": data.businessLocation,
-        //    "OwnerId": userJsonObj.id,
-        //    "businessType": 'Testing', //self.selectedType().description,
-        //    "id": self.id
-        //})
-
+        updateUserBalance(data);
         $("#myModal2 .close").click();
-        self.businesses.push({
-            name: data.name,
-            validFromDate: data.validFromDate,
-            validToDate: data.validToDate
-        });
+        //self.businesses.push({
+        //    name: data.name,
+        //    validFromDate: data.validFromDate,
+        //    validToDate: data.validToDate
+        //});
 
-        setTimeout(function () {
-            self.name(null);
-            self.validFromDate(null);
-            self.validToDate(null)
-        }, 2000);
+        //setTimeout(function () {
+        //    self.name(null);
+        //    self.validFromDate(null);
+        //    self.validToDate(null)
+        //}, 2000);
+        alert('saved successfully, Please refresh to see changes');
     }
 
     self.editItem = function (data) {
@@ -116,6 +101,9 @@
 
     self.employeeManagement = function () {
         window.location.href = "employeeManagement.html";
+    }
+    self.alcoholManagement = function () {
+        window.location.href = "alcoholOwner.html";
     }
     self.accountManagement = function () {
         window.location.href = "accountManagement.html";

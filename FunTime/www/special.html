@@ -49,14 +49,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             <li data-bind="click: $root.loginRedirect" style="cursor:pointer"><a class="scroll">Log In</a></li>
                             <li data-bind="click: $root.registerRedirect" style="cursor:pointer"><a class="scroll">Register</a></li>
                         </ul>
-                        <div class="w3social-icons w3lsnav-right">
-                            <ul>
-                                <li><a href="#" class="fb"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#" class="gp"><i class="fa fa-google-plus"></i></a></li>
-                                <li><a href="#" class="twit"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#" class="drbl"><i class="fa fa-dribbble"></i></a></li>
-                            </ul>
-                        </div>
                         <div class="clearfix"> </div>
                     </div>
                 </div>
@@ -74,32 +66,32 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     <div class="agileinfo-w3lsrow login-top">
                         <div class="col-md-6 w3llist-grids">
                             <h1>Specials</h1>
-                            <table class="table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th>Special</th>
-                                        <th>Valid From</th>
-                                        <th>Valid TO</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody data-bind="foreach: $root.specials">
-                                    <tr>
-                                        <td>
-                                            <h3 data-bind="text: name"></h3>
-                                        </td>
-                                        <td>
-                                            <h4 data-bind="text: validFromDate"></h4>
-                                        </td>
-                                        <td>
-                                            <h4 data-bind="text: validToDate"></h4>
-                                        </td>
-                                        <td>
-                                            <input type="submit" value="Download Special" data-bind="click: $root.downloadSpecial" />
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Special</th>
+                                            <th>Valid From</th>
+                                            <th>Valid TO</th>
+                                            <!--<th></th>-->
+                                        </tr>
+                                    </thead>
+                                    <tbody data-bind="foreach: $root.specials">
+                                        <tr>
+                                            <td>
+                                                <h3 data-bind="text: name"></h3>
+                                            </td>
+                                            <td>
+                                                <h4 data-bind="text: validFromDate"></h4>
+                                            </td>
+                                            <td>
+                                                <h4 data-bind="text: validToDate"></h4>
+                                            </td>
+                                            <!--<td>
+                        <input type="submit" value="Download Special" data-bind="click: $root.downloadSpecial" />
+                    </td>-->
+                                        </tr>
+                                    </tbody>
+                                </table>
                         </div>
                         <div class="clearfix"> </div>
                     </div>
@@ -107,22 +99,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             </div>
         </div>
     </div>
-
-    <div class="footer">
-        <div class="container">
-            <div class="w3social-icons">
-                <ul>
-                    <li><a href="#" class="fb"><i class="fa fa-facebook"></i></a></li>
-                    <li><a href="#" class="gp"><i class="fa fa-google-plus"></i></a></li>
-                    <li><a href="#" class="twit"><i class="fa fa-twitter"></i></a></li>
-                    <li><a href="#" class="drbl"><i class="fa fa-dribbble"></i></a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
     <div class="w3copy-agile">
         <div class="container">
-            <p class="footer-class">© 2017 Fun Time. All Rights Reserved | Design by  <a href="http://w3layouts.com/" target="_blank">Sosh Student</a> </p>
+            <p class="footer-class">© 2017 FunTime App. All Rights Reserved | Design by  Sosh Student</p>
         </div>
     </div>
 

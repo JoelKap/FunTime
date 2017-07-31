@@ -1,9 +1,9 @@
 ﻿function loginvm() {
     var self = this;
     var db = new Firebase("https://fun-time-9c827.firebaseio.com/User");
-  
     self.Email = ko.observable();
     self.Password = ko.observable();
+    self.isWrongCredentials = ko.observable(false);
     self.isAuth = false;
 
     self.loginRedirect = function () {
@@ -37,6 +37,9 @@
                 window.location.href = "artist.html";
             }
             
+        }
+        else {
+         return  self.isWrongCredentials(ko.observable(true));
         }
     }
 

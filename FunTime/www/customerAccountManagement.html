@@ -7,9 +7,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Fun Time| Home ::</title>
+    <title>Aptile a Mobile App Landing Flat Bootstarp Responsive Web Template| Home :: w3layouts</title>
     <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
-    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
     <!-- jQuery (Bootstrap's JavaScript plugins) -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <!--<link href="css/component.css" rel="stylesheet" type="text/css" />-->
@@ -26,31 +25,25 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <!--webfont-->
     <!---- start-smoth-scrolling---->
     <script src="js/move-top.js"></script>
+    <!--<script type="text/javascript" src="js/move-top.js"></script>-->
     <script src="js/easing.js"></script>
-
-
-    <!--  -->
+    <!--<script type="text/javascript" src="js/easing.js"></script>-->
+    <script type="text/javascript">
+			jQuery(document).ready(function($) {
+				$(".scroll").click(function(event){
+					event.preventDefault();
+					$('html,body').animate({scrollTop:$(this.hash).offset().top},900);
+				});
+			});
+    </script>
+    <!---- start-smoth-scrolling---->
 
     <link href="css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
     <link href="css/style.css" type="text/css" rel="stylesheet" media="all">
     <link href="css/carousel.css" type="text/css" rel="stylesheet" media="all">
     <link href="css/font-awesome.css" rel="stylesheet"> <!-- font-awesome icons -->
-    <!-- //Custom Theme files -->
-    <!-- js -->
-    <script src="js/jquery-2.2.3.min.js"></script>
-
-    <!--  -->
-    <script type="text/javascript">
-        jQuery(document).ready(function ($) {
-            $(".scroll").click(function (event) {
-                event.preventDefault();
-                $('html,body').animate({ scrollTop: $(this.hash).offset().top }, 900);
-            });
-        });
-    </script>
-    <!---- start-smoth-scrolling---->
 </head>
-<body class="cbp-spmenu-push" id="deviceready">
+<body class="cbp-spmenu-push"  id="deviceready">
     <div id="home" class="banner">
         <div class="container">
             <div class="header">
@@ -59,7 +52,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         <h3>Menu</h3>
                         <a style="cursor:pointer" data-bind="click: $root.customerProfileManagement">Edit Profile</a>
                         <a style="cursor:pointer" data-bind="click: $root.customerEventManagement">Event Management</a>
-                        <a style="cursor:pointer" data-bind="click: $root.customerAccountManagement">Account Management</a>
+                        <a style="cursor:pointer"  class="active">Account Management</a>
                         <a style="cursor:pointer" data-bind="click: $root.logOut">Log out</a>
                     </nav>
                     <div class="main buttonset">
@@ -71,80 +64,67 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     <!--<script src="js/classie.js"></script>-->
                     <script src="homeTemplate/js/classie.js"></script>
                     <script>
-                        var menuRight = document.getElementById('cbp-spmenu-s2'),
-                        showRightPush = document.getElementById('showRightPush'),
-                        body = document.body;
+				var menuRight = document.getElementById( 'cbp-spmenu-s2' ),
+				showRightPush = document.getElementById( 'showRightPush' ),
+				body = document.body;
 
-                        showRightPush.onclick = function () {
-                            classie.toggle(this, 'active');
-                            classie.toggle(body, 'cbp-spmenu-push-toleft');
-                            classie.toggle(menuRight, 'cbp-spmenu-open');
-                            disableOther('showRightPush');
-                        };
+				showRightPush.onclick = function() {
+					classie.toggle( this, 'active' );
+					classie.toggle( body, 'cbp-spmenu-push-toleft' );
+					classie.toggle( menuRight, 'cbp-spmenu-open' );
+					disableOther( 'showRightPush' );
+				};
 
-                        function disableOther(button) {
-                            if (button !== 'showRightPush') {
-                                classie.toggle(showRightPush, 'disabled');
-                            }
-                        }
+				function disableOther( button ) {
+					if( button !== 'showRightPush' ) {
+						classie.toggle( showRightPush, 'disabled' );
+					}
+				}
                     </script>
                 </div>
                 <div class="clearfix"></div>
             </div>
             <div class="banner-info">
-                <h1>WELCOME TO USER HOME PAGE</h1>
-            </div>
-            <div class="down">
-                <a class="scroll" href="#feature"><img src="homeTemplate/images/scroll.png" alt="" /></a>
+                <h1>ACCOUNT <span>MANAGEMENT</span></h1>
             </div>
         </div>
     </div>
     <!--features-->
     <div id="feature" class="features">
         <div class="container">
-           <p>Please feel to navigate through our user page, menu are on your right slide</p>
-           
-        </div>
-    </div>
-    <!-- Features -->
-
-    <div id="myModal" class="modal wthree-modal" tabindex="-1">
-        <!-- Modal content -->
-        <div class="modal-content">
-            <div class="modal-header">
-                <span class="close" data-dismiss="modal">&times;</span>
-                <h3>Book</h3>
+            <h3>Current Balance</h3>
+            <div>
+              <h1 data-bind="text: $root.balance"></h1>
             </div>
-
+            <div>
+               <h4>BUY TOKEN</h4>
+            </div>
             <div class="codes">
                 <div class="container">
-                    <div class="agileinfo-w3lsrow login-top">
-                        <div class="col-md-6 w3llist-grids w3llist-grids-btm2" data-bind="with: $root.editWithItem">
-
-                            <input type="text" data-bind="value: name" class="name active" placeholder="Event Name" readonly="readonly" />
-                            <input type="text" data-bind="value: description" class="surname" placeholder="Event description" readonly="readonly" />
-                            <input type="text" data-bind="value:  amountInToken" class="surname" placeholder="Price" readonly="readonly" />
-                            <input type="text" data-bind="value:  purchaseAmount" class="surname" placeholder="Purchase Beer" />
-                            <input type="text" data-bind="value: date" class="contact" placeholder="Date" readonly="readonly" />
-                            <div>
-                                <input type="submit" value="Pay" data-bind="click: $root.payTicket" />
+                    <div class="grid_3 grid_4">
+                        <div class="agileinfo-w3lsrow login-top">
+                            <div class="col-md-6 w3llist-grids">
+                                <form action="#" method="post">
+                                    <input type="email" data-bind="value: $root.amount" class="surname" placeholder="Price" required="">
+                                    <input type="submit" value="Buy" data-bind="click: $root.buyToken">
+                                    <div>
+                                        <span data-bind="if: $root.isAdded" style="color:red">Added successfully</span>
+                                    </div>
+                                </form>
                             </div>
-                            <p data-bind="if: $root.isInsufficient" style="color:red">Insuffucient Balance</p>
+                            <div class="clearfix"> </div>
                         </div>
-                        <div class="clearfix"> </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
     <!--footer-->
-    <div class="footer">
+    <div class="w3copy-agile">
         <div class="container">
-            <p>Copyright © 2015 Fun Time. All rights reserved | Template by Sosh Student</p>
+            <p class="footer-class">© 2017 FunTime App. All Rights Reserved | Design by  Sosh Student</p>
         </div>
     </div>
-
 
     <script src="js/bootstrap.js"></script>
     <script type="text/javascript" src="cordova.js"></script>
@@ -157,9 +137,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <script src="assets/js/knockout.mapping-latest.debug.js"></script>
     <script src="js/firebase.js"></script>
     <script src="homevm.js"></script>
+
 </body>
 </html>
-
 
 <script>
     $(document).ready(function () {

@@ -31,13 +31,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
     <!--  -->
 
-    <link href="css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
-    <link href="css/style.css" type="text/css" rel="stylesheet" media="all">
-    <link href="css/carousel.css" type="text/css" rel="stylesheet" media="all">
-    <link href="css/font-awesome.css" rel="stylesheet"> <!-- font-awesome icons -->
+    
     <!-- //Custom Theme files -->
     <!-- js -->
-    <script src="js/jquery-2.2.3.min.js"></script>
+ 
 
     <!--  -->
     <script type="text/javascript">
@@ -49,8 +46,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         });
     </script>
     <!---- start-smoth-scrolling---->
+    <link href="css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
+    <link href="css/style.css" type="text/css" rel="stylesheet" media="all">
+    <link href="css/carousel.css" type="text/css" rel="stylesheet" media="all">
+    <link href="css/font-awesome.css" rel="stylesheet"> <!-- font-awesome icons -->
+    <script src="js/jquery-2.2.3.min.js"></script>
+
 </head>
-<body class="cbp-spmenu-push" id="deviceready">
+<body id="deviceready">
     <div id="home" class="banner">
         <div class="container">
             <div class="header">
@@ -62,6 +65,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         <a style="cursor:pointer" href="#home" class="active">Event Management</a>
                         <a style="cursor:pointer" data-bind="click: $root.specialsManagement">Special Management</a>
                         <a style="cursor:pointer" data-bind="click: $root.employeeManagement">Emp Management</a>
+                        <a style="cursor:pointer" data-bind="click: $root.alcoholManagement">Alcohol Management</a>
                         <a style="cursor:pointer" data-bind="click: $root.accountManagement">Account Management</a>
                         <a style="cursor:pointer" data-bind="click: $root.logOut">Log out</a>
                     </nav>
@@ -103,18 +107,22 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th>name</th>
-                            <th>desc</th>
+                            <th>Name</th>
+                            <!--<th>Desc</th>-->
+                            <th>Price</th>
                             <th>Date</th>
                             <th>edit</th>
+                            <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody data-bind="foreach: $root.events">
                         <tr>
                             <td data-bind="text: name"></td>
-                            <td data-bind="text: description"></td>
+                            <!--<td data-bind="text: description"></td>-->
+                            <td data-bind="text: amountInToken"></td>
                             <th data-bind="text: date"></th>
                             <td data-bind="click: $parent.editItem" style="color:red; cursor:pointer">edit</td>
+                            <th><input type="submit" value="Cancel" data-bind="click: $root.cancelTicket" /></th>
                         </tr>
                     </tbody>
                 </table>
@@ -126,7 +134,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <!--footer-->
     <div class="w3copy-agile">
         <div class="container">
-            <p class="footer-class">© 2017 Fun Time. All Rights Reserved | Design by  <a href="http://w3layouts.com/" target="_blank">Sosh Student</a> </p>
+            <p class="footer-class">© 2017 FunTime App. All Rights Reserved | Design by  Sosh Student</p>
         </div>
     </div>
 
@@ -147,6 +155,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 <span style="margin-right: 50px;">Business</span>   <select data-bind="options: $root.businesses,optionsText: 'businessName',value: $root.selectedType,optionsCaption: 'Choose...'"></select>
                                 <input type="text" data-bind="value: $root.name" class="name active" placeholder="Event Name" required="" />
                                 <input type="text" data-bind="value: $root.description" class="surname" placeholder="Description" required="" />
+                                <input type="text" data-bind="value: $root.amountInToken" class="surname" placeholder="Price" required="" />
                                 <input type="text" data-bind="value: $root.date" class="contact" placeholder="Date" required="" />
                                 <div>
                                     <input type="submit" value="Create event" data-bind="click: $root.registerEvent" />
@@ -176,6 +185,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
                             <input type="text" data-bind="value: name" class="name active" placeholder="Event Name" required="" />
                             <input type="text" data-bind="value: description" class="surname" placeholder="Event description" required="" />
+                            <input type="text" data-bind="value: amountInToken" class="surname" placeholder="Price" required="" />
                             <input type="text" data-bind="value: date" class="contact" placeholder="Date" required="" />
                             <div>
                                 <input type="submit" value="Update" data-bind="click: $parent.registerEventUpdate" />
